@@ -1,0 +1,10 @@
+<!--IFRAME-->
+<div id="iframe">
+<select id="seleciona" name="if_sir" onChange ="vaiFrame()" />
+	<option name="null" value="http://10.13.54.150:20020/navegacao/framesetNivel1Aplicacao.cfm" selected disabled>Selecionar...</option>
+	<option name="sir_velho" value="http://10.13.54.150:20020/navegacao/framesetNivel1Aplicacao.cfm">Iframe SIR Velho</option>
+	<option name="sir_novo" value="http://sir.nt.embratel.com.br/navegacao/framesetNivel1Aplicacao.cfm?">Iframe SIR Novo</option>
+</select>
+<p><span>Tempo: </span><span id="clock1">00:00:00<script type="text/javascript">getSecs();</script></span></p>
+<iframe name="if_sir" id="if_sir" src ="http://10.13.54.150:20020/navegacao/framesetNivel1Aplicacao.cfm" /></iframe>
+</div><!--IFRAME-->

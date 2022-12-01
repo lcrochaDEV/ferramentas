@@ -1,0 +1,286 @@
+<!--DIV FLUTUANTE LADO DIREITO-->
+<div id="flutuar">
+<!----><table>
+	<td>
+		<h2 class=''>CENTRO FUNCIONAL</h2>
+		<h3 class=''>CF FIBRA</h3>    
+			<p class=''>DP/RJO/AM/NET/FO</p>	
+		<h3 class=''>CF BTS</h3>    
+			<p class=''>OM/RJO/OE1/RED</p>
+		<h3 class=''>CF BSOD</h3>    
+			<p class=''>AT/RJO/OE1/IAT/BS</p>
+		<h3 class=''>CF MUX</h3>    
+			<p class=''>OM/RJO/AM/BKB/CD - AM</p>
+			<p class=''>OM/RJO/EN/BKB/CD - EN</p>
+			<p class=''>OM/RJO/AC/BKB/CD - ARCOS</p>
+			<h3 class=''>CF VOLTA REDONDA</h3>    
+			<p class=''>AT/VRD/SC</p>
+			<h3 class=''>NOQUINHO</h3>    
+			<p class=''>OM/RJO/AM/RED/CT</p>			
+			<h3 class=''>MLS</h3>    
+			<p class=''>DP/RJO/AM/PST</p>
+			<h3 class=''>CLS</h3>    
+			<p class=''>OM/RJO/AM/RED/CD</p>
+			<h3 class=''>VVX</h3>    
+			<p class=''>SV/SPO/IG/VVX/TX</p>
+			<h3 class=''>BSOD REDE EXTERNA</h3>    
+			<p class=''>DP/RJO/AM/NET/FO</p>			
+			<h3 class=''>ENERGIA</h3>    
+			<p class=''>OM/RJO/AM//EN</p>
+			<h3 class=''>IPCD</h3>    
+			<p class=''>SP/RJO/AM/IP/CD</p>
+			<h3 class=''>ACESSO TERCEITO</h3>    
+			<p class=''>DP/RJO/AM/PST</p>
+
+	</td>
+</table>
+ </div>
+<!--DIV FLUTUANTE LADO DIREITO-->
+  <div id="main">
+    <h1>Responsive Side Menu</h1>
+  </div>
+ <!--COMANDOS-->
+<div id="comando">
+<!------------------------------------------------ACIONAMENTO NOVO v11.2019----------------------------------------->
+<p>Acionamento Técnico v11.2019</p>
+<div id="acionamento">
+<div id="text_B">
+<textarea id="acionamentoTxt" value="" rows="14" cols="100"></textarea><br />
+
+<a href="#" title="Restaurar" onclick="limpar_C()" class="material-icons" />restore</a>
+<a href="#" title="Refresh" onclick="refresh_C()" class="material-icons"/>refresh</a>
+<a href="#" id="Copiar" title="Copiar" onclick="copiar_C()" class="material-icons"/>file_copy</a>
+</div><!--textarea-->
+</div><!--ACIONAMENTO-->
+<div id="sele_C">
+<label>Atualização:</label>
+<select id="atualizacao_C" required "">
+	<option selected="selected" disabled selected style="display: none;" value="">Escolha uma Opção</option>
+	<option value="CIENTE DO ATENDIMENTO.">CIENTE DO ATENDIMENTO.</option>
+	<option value="EM DESLOCAMENTO.">EM DESLOCAMENTO.</option>
+	<option value="AGUARDANDO ACESSO.">AGUARDANDO ACESSO.</option>
+	<option value="REALIZANDO TESTES.">REALIZANDO TESTES.</option>
+	<option value="REALIZANDO TESTES MUX AM.">REALIZANDO TESTES COM MUX AM.</option>
+	<option value="REALIZANDO TESTES MUX EN.">REALIZANDO TESTES COM MUX EN.</option>
+	<option value="NO LOCAL REALIZANDO TESTES MUX ARCOS.">REALIZANDO TESTES COM MUX ARCOS.</option>
+	<option value="SERÁ VISTO EM HORÁRIO COMERCIAL.">SERÁ VISTO EM HORÁRIO COMERCIAL.</option>
+</select>
+<br /><br />
+<label>Nome do Técnico:</label>
+<select id="nome_tec_C" required "">
+	<option selected="selected" disabled selected style="display:none;" value="">Escolha um Nome</option>
+</select>
+<br /><br />
+<label>Previsão de Chegada:</label>
+<select id="previsao_C" required>
+	<option selected="selected" disabled selected style="display: none;" value="">Tempo Estimado</option>
+	<option value="30">30 minutos</option>
+	<option value="40">40 minutos</option>
+	<option value="50">50 minutos</option>
+	<option value="60">1:00 hora</option>
+	<option value="120">2:00 hora</option>
+</select>
+<!--<p id="demo" value=""/></p>-->
+<br /><br />
+<label>Ponta de Atendimento:</label>
+<select id="est_clien_C" required "">
+	<option id="selected_C" selected="selected" disabled selected style="display: none;" value="">Local de Atendimento</option>
+	<option id="estacao_C" value="X">ESTAÇÃO</option>
+	<option id="cliente_C" value="X">CLIENTE</option>
+</select>
+</div><!--select-->
+<select id="list_ocult" required "">
+	<option selected="selected" disabled selected style="display:none;" value="">Escolha um Nome</option>
+</select>
+<br /><br /><br /><br /><br /><br /><br /><br /><br />
+<br /><br /><br /><br /><br /><br /><br />
+<!------------------------------------------------ACIONAMENTO NOVO v11.2019----------------------------------------->
+<p>Causa Fato Ação - F.C.A</p>
+<textarea rows="8" cols="100">
+F: CLIENTE REPORTA CCTO INOPERANTE.																			
+C: SEM FALHAS NO SERVIÇO PRESTADO PELO GRUPO CLARO BRASIL.	
+A: CCTO NORMALIZADO SEM INTERVENÇÃO TÉCNICA.																	
+OBSERVAÇÕES:	
+</textarea>
+<!--MENU_OCULTO-->
+<div id="menu_oculto">
+<ul>
+	<li><a href="#" class="fiber"><img src="https://www.pinclipart.com/picdir/big/117-1176370_fiber-optic-broadband-by-harbor-communications-fiber-optics.png" /></a></li>
+	<li><a href="#" class="ccna"><img src="https://zabeelinstitute.ae/wp-content/uploads/2019/05/ccna_300x300.png" /></a></li>
+	<li><a href="#"><img src="" /></a></li>
+</ul>
+</div><!--menu_oculto->
+<!--MENU_OCULTO-->
+<!--FIBER-->
+<div id="fiberDiv">
+<p>Passando REC e RAL - F.O.</p>
+<textarea rows="7" cols="100">
+FAVOR VERIFICAR ROMPIMENTO DE F.O.							
+ESCOLA MUNICIPAL BARÃO DE SANTA MARGARIDA						
+ENDEREÇO: RUA COREMAS 358 SANTA MARGARIDA COSMOS 					
+
+FIBRA PARADA A 196 METROS.								
+SERIGRAFIA EBTL CABLENA 2013 CFOA SM AS80S 12 F.O. - LOTE 15113B - METRAGEM 1155		
+</textarea>
+</div><!--fiber-->
+<!--FIBER-->
+<!--COMANDO_ROTEADOR-->
+<div id="ccnaDiv">
+<p>Comandos</p>
+<textarea rows="11" cols="100">
+CISCO
+Zerando contadores Cisco → clear counters interface X0/0
+
+telnet vrf SESEG_RJ:6610 200.251.54.214 source-interface GIGA 1/2/0.76
+
+telnet 200.251.54.214 \vrf SESEG_RJ:6610
+
+ping vrf SESEG_RJ:6610 200.251.54.214 source-interface GIGA 1/2/0.76
+
+Saber MAC do PE PARA O CPE → sh arp vrf INFORMATICA:6213 TENGIGe 0/6/1/0.16448
+
+PPP - show ppp multilink interface multilink 206997
+
+log de quedas
+sh log | include TenGigE0/6/1/0.386215
+
+Informações de Hardware
+Show  environment (em switches “show env all”)
+Show diag
+Show inventory
+show diag					 
+				
+HP/HUAWAI
+ping -c10000 -s600 10.0.0.1
+
+Zerando inteface - reset counters controller E1 1/0
+
+DATACOM 
+show interfaces table utilization bandwidth
+
+SENHAS EBT
+enable secret PRO1AN
+username EBT password CQMR
+line console 0
+login local
+line vty 0 4
+login local
+
+OLT ZTE
+Verificar nível de potência de RX e TX.
+C320-RJOAE-001#show gpon remote-onu interface pon gpon-onu_1/1/1:1
+
+Verificar distância de uma determinada ONU.
+C320-RJOAE-001#show gpon onu distance gpon-onu_1/1/1:1
+
+Verificar Estatística e status da interface eth de uma ONU específica.
+C320-RJOAE-001#show gpon remote-onu interface eth gpon-onu_1/1/1:1
+
+Verificar status de todas as ONUs da OLT.
+C320-RJOAE-001#show gpon onu state
+
+Verificar status de ONU de uma PON.
+C320-RJOAE-001#show gpon onu state gpon-olt_1/1/1
+
+Estatística específica da ONU.
+C320-RJOAE-001#show interface gpon-onu_1/1/1:1
+
+Informações, Estatística  na porta pon inteira.
+C320-RJOAE-001#show interface gpon-olt_1/1/1
+
+C220-RJOBGU-001#show gpon onu state gpon-olt_0/4/2
+
+C320-RJOAE-001#show mac gpon onu gpon-onu_1/1/5:4
+Total mac address : 1
+
+Mac address     Vlan id   Type     Port                         Vc     Time
+----------------------------------------------------------------------------
+0078.88cc.3df0    1502    Dynamic    gpon-onu_1/1/5:4          vport 1   0
+############################################################################
+C220-RJOARO-001#show mac vlan 3005
+Total mac address : 2
+
+Mac address     Vlan id   Type     Port                         Vc     Time
+----------------------------------------------------------------------------
+b414.89ee.b032    3005    Dynamic    gei_0/14/4                          300		PE				
+78da.6e02.d5c0    3005    Dynamic    gpon-onu_0/5/1:4          vport 1   0			CPE
+C220-RJOARO-001#
+
+C220-RJOARO-001#show mac gpon onu gpon-onu_0/5/1:4
+Total mac address : 1
+
+Mac address     Vlan id   Type     Port                         Vc     Time
+----------------------------------------------------------------------------
+78da.6e02.d5c0    3005    Dynamic    gpon-onu_0/5/1:4          vport 1   0
+C220-RJOARO-001#
+
+VERIFICANDO POTÊNCIA NA OLT ZTE (Dois comandos)
+C320-RJOST-001#show gpon onu  detail-info gpon-onu_1/1/1:16
+
+ONU interface:         gpon-onu_1/1/1:16
+  Name:                F621_RJOBQF_016
+  Type:                ZTE-F621
+  State:               ready
+  Admin state:         enable
+  Phase state:         Logging
+  Authentication mode: SN
+  SN Bind:             enable with SN check
+  Serial number:       ZTEGC048397A
+  Password mode:       none
+  Password:
+  Device ID:
+  Description:         16$$F621_RJOBQF_016$$
+  Vport mode:          gemport
+  DBA Mode:            Hybrid
+  ONU Status:          enable
+  OMCI BW Profile:     enable
+  Line Profile:        N/A
+  Service Profile:     N/A
+  Alarm Profile:       N/A
+  Performance Profile: N/A
+  ONU Distance:        134556917m
+  Online Duration:     67h 05m 19s
+  FEC:                 none
+------------------------------------------
+       Authpass Time          OfflineTime             Cause
+   1   2020-04-06 19:24:00    2020-04-09 05:00:21     DyingGasp
+   2   2020-04-09 05:03:12    2020-04-09 18:44:37     DyingGasp
+   3   2020-04-09 18:47:16    2020-04-16 08:48:23     DyingGasp
+   4   2020-04-16 08:50:53    2020-04-16 17:35:04     DyingGasp
+   5   2020-04-16 17:37:33    2020-04-29 10:36:26     DyingGasp
+   6   2020-04-29 10:38:44    2020-05-01 15:42:13     DyingGasp
+   7   2020-05-01 15:44:33    2020-05-02 18:18:55     DyingGasp
+   8   2020-05-02 18:22:46    2020-05-02 19:54:18     DyingGasp
+   9   2020-05-02 19:57:58    2020-05-02 20:02:57     DyingGasp
+  10   2020-05-02 20:05:28    2020-05-02 20:09:32     DyingGasp
+C320-RJOST-001#
+
+C220-NRISHO-001#show transceiver  info gpon-olt_0/3/3
+RxPower      :N/A       (dBm) TxPower    :3.043     (dBm)
+Bias-Current :11.362    (mA)  Laser-Rate :2488      (MBd)
+Supply-Vol   :3.211     (V)   Wavelength :N/A       (nm)
+Temperature  :47.600    (C)   Vender-PN  :SOGP4321-PSGA
+Vender-Name  :SUPERXON                  MaxDistance: 20             (km)
+C220-NRISHO-001#
+
+<--------------------------------CISCO--------------------------------->
+para ver as Fans do equipamento
+sh environment
+
+ Main Power Supply is AC
+
+ Fan 1 OK
+ Fan 2 OK
+ Fan 3 OK
+
+ Fan Speed Setting: Normal
+
+ System Temperature: 22 Celsius (normal)
+
+ Environmental information last updated 00:00:11 ago
+
+<--------------------------------CISCO--------------------------------->
+</textarea>
+</div><!--comandos_ro-->
+</div><!--COMANDOS-->
+<!--COMANDO_ROTEADOR-->
