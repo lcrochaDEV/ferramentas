@@ -88,7 +88,7 @@ function isertTable(passDados){
 					<td>${passDados.tel2}</td>
 					<td>${passDados.tel3}</td>
 					<td>${passDados.nome_mae}</td>
-					<td>${passDados.email}</td>
+					<td data-username>${passDados.email}</td>
 					<td>${passDados.horario}</td>
 					<td id="td_check">
 						<span id="OnOff">ON: </span>
@@ -104,9 +104,11 @@ function isertTable(passDados){
 		//********************************ESTILO E COR CINZA***********************************
 		let colorCheck = document.querySelectorAll("#td_check");
 			colorCheck.forEach(colorCheck => {
-				colorCheck.style.backgroundColor = '#00FF00';	
+				colorCheck.style.backgroundColor = '#FF0000';	
 				colorCheck.style.color = '#FFF';	
-				colorCheck.style.fontWeight = "bold"	
+				colorCheck.style.fontWeight = "bold"
+				colorCheck.children['OnOff'].innerText = "OFF: ";
+				colorCheck.children[1].checked = false
 			})
 		//************************************//CSS COLOR//************************************
 		var cssColor = document.querySelectorAll("#tabela tr");
@@ -124,11 +126,11 @@ function isertTable(passDados){
 
 function onoffExec(){
 //***EVENTO CLICK CHECK***//
-var displayAll = document.querySelector("#tabela");
-var input_alloff = document.querySelector("[data-alloff]");
+let displayAll = document.querySelector("#tabela");
+let input_alloff = document.querySelector("[data-alloff]");
 	displayAll.addEventListener("click", function(event){
 		let clickCheck = event.path;
-			if(clickCheck[0].checked === false){
+			if(clickCheck[0].checked === false && clickCheck[1].id !== ''){
 				clickCheck[1].style.backgroundColor = "#FF0000";
 				clickCheck[1].childNodes[1].style.color = "#FFFFFF";
 				clickCheck[1].childNodes[1].innerText = "OFF: ";
@@ -138,7 +140,6 @@ var input_alloff = document.querySelector("[data-alloff]");
 				clickCheck[1].style.backgroundColor = "#00FF00";
 				clickCheck[1].childNodes[1].style.color = "#FFFFFF";
 				clickCheck[1].childNodes[1].style.fontWeight = "bold";
-				input_alloff.childNodes[1].checked = false;
 			}
 	})	
 };
