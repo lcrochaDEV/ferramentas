@@ -12,10 +12,9 @@ function desenvolvedor() {
 }
 
 function copy() {
-	now = new Date;
+ 	now = new Date;
 	document.open();
 	document.write (`&#9400; 2017 - ${now.getFullYear()} - Todos os Direitos Reservados!`);
-	document.write (` </br>Sai dae Tulipa`);
 	document.close();
 }
 

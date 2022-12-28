@@ -3,26 +3,47 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Cadastrar Dados</title>
+    <link rel="stylesheet" href="index.css">
 </head>
 <body>
-    <form name="meu_form" data-formulario>
-
-        <h1>Cadastra Dados</h1>
-        <label for="nome">Nome</label>
-        <input type="text" id="nomeid" placeholder="" required="required" name="nome" data-nome/>
+    <div id="conteudo">
+         <form name="meu_form" data-formulario>
+            <h1>Cadastra Dados</h1>
+            <label for="nome">Nome: </label>
+            <input type="text" id="nomeid" placeholder="" required="required" name="nome" data-nome/>
+            <span data-erro></span>
+        <!--	
+            <label for="nome">RG: </label>
+            <input type="text" id="nomeid" placeholder="" required="required" name="rg" data-rg/>
+            <label for="nome">CPF: </label>
+            <input type="text" id="nomeid" placeholder="" required="required" name="cpf" data-cpf/>
+            <label for="nome">MATRÍCULA: </label>
+            <input type="text" id="nomeid" placeholder="" required="required" name="mat" data-mat/>
+            <label for="nome">TEL1: </label>
+            <input type="text" id="nomeid" placeholder="" required="required" name="tel1" data-tel1/>
+            <label for="nome">TEL2: </label>
+            <input type="text" id="nomeid" placeholder="" required="required" name="tel2" data-tel2/>
+            <label for="nome">TEL3: </label>
+            <input type="text" id="nomeid" placeholder="" required="required" name="tel3" data-tel3/>
+            <label for="nome">NOME DA MÃE: </label>
+            <input type="text" id="nomeid" placeholder="" required="required" name="nome_mae" data-nome_mae/>
+            <label for="nome">USERNAME: </label>
+            <input type="text" id="nomeid" placeholder="" required="required" name="username" data-username/>
+            <label for="nome">HORÁRIO: </label>
+            <input type="text" id="nomeid" placeholder="" required="required" name="horario" data-horario/>
+            <label for="nome">ÁREA: </label>
+            <input type="text" id="nomeid" placeholder="" required="required" name="area" data-area/>
+            <span data-erro></span>
         
-      <!--  <input type="tel" id="foneid" placeholder="(xx)xx-xx-xx-xx" name="fone" />
-        <label for="fone">Fone</label>
-      
-        <input type="email" id="emailid" placeholder="fulano@mail.com" name="email" />
-        <label for="email">Email</label>
-      
-        <textarea placeholder="Deixe sua opnião"></textarea>
-      -->
-        <input type="submit" class="enviar" value="Enviar" data-enviar/>
-      </form>
-      
+            <label for="fone">Fone</label>  
+            <input type="tel" id="foneid" placeholder="(xx)xx-xx-xx-xx" name="fone" />
+            <label for="email">Email</label>   
+            <input type="email" id="emailid" placeholder="fulano@mail.com" name="email" />
+        -->
+            <input type="submit" class="enviar" value="Enviar" data-enviar/>
+        </form>
+    </div><!--CONTEUDO-->
 </body>
 <script src="/html-js/cadastradados.js" type="module"></script>
 </html>

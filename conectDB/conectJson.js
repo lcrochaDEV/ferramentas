@@ -1,7 +1,7 @@
 //METODO GET | RECUPERANDO DADOS DE BD
 async function conectJson(){
     try{
-		const conectJData = await fetch('./json/dados_tecnicos.json');
+		const conectJData = await fetch('../json/dados_tecnicos.json');
 		const dados_tecnicos = await dados_tecnicos.json();
 		return dados_tecnicos;
 		
@@ -10,8 +10,10 @@ async function conectJson(){
     }
 }
 
+const origemServer = window.location.origin;
+console.log(`${origemServer}/json/dados_tecnicos.json`)
 async function criaVideo(nome) {
-    const conexao = await fetch("http://10.10.65.42:8080/json/dados_tecnicos.json", {
+    const conexao = await fetch(`../json/dados_tecnicos.json`, {
         method: "POST",
         headers: {
             "Content-type": "application/json"
@@ -31,7 +33,6 @@ async function criaVideo(nome) {
 //import { dodosApi } from "../conectDB/conectJson.js";
 
 //console.log(dodosApi);
-
 
 export const dodosApi = {
 	conectJson,

@@ -4,13 +4,14 @@ const formulario = document.querySelector("[data-formulario]");
 
 async function cadastrar(event) {
     event.preventDefault();
-    const nome = document.querySelector("[data-nome]").value;
+    const nome = document.querySelector("[data-nome]");
     try {
-        await dodosApi.criaVideo(nome);
+        await dodosApi.criaVideo(nome.value);
 		console.log('Enviado com Sucesso!')
         //window.location.href = "../pages/envio-concluido.html";
+        nome.value = '';
     }catch(err) {
-        alert(err);
+       document.querySelector("[data-erro]").innerHTML = err;
     }
 }
 

@@ -69,7 +69,7 @@ function include() {
 function passagemURL() {
 	var lisrURL = document.querySelectorAll('include-html');
 	 lisrURL.forEach((lisrURL, i) => {	    	
-	   file = lisrURL.getAttribute('url'); //PARA COLCOR EM LOOP É SO COLOCA I NO COUCHETES
+	   file = lisrURL.getAttribute('url'); //PARA COLCOR EM LOOP É SO COLOCA I NO COLCHETES
 	   return includeHTML(file, i);
 	});
 }
@@ -80,8 +80,7 @@ function includeHTML(file, index) {
 			.then(function(response) {
 			response.text()
 			.then(function(result){
-			var log = document.querySelectorAll('include-html')[index].innerHTML = result;
-			//console.log(`${file} | ${index}`); 
+			var log = document.querySelectorAll('include-html')[index].innerHTML += result;
 			})		
 		})
 		.catch(function(err) {
