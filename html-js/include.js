@@ -1,90 +1,70 @@
   document.addEventListener("DOMContentLoaded", function(event) {
     //console.log("DOM completamente carregado e analisado");
-	include();
+	carregaConteudo();
 	passagemURL();
 });
 
-function include() {
+//INCLUDE HTML MONTA A PÁGINA CARREGA CONTEUDO
+function carregaConteudo() {
 //NAVEGAÇÃO ENTRE LINKS
-	var getUrl = window.location;
-	var baseUrl = getUrl.protocol + "//" + getUrl.hostname + "/" + getUrl.pathname.split('/')[1];
-	//compara palavra se existe
+	//PEGA O CAMINHO DA URL PARA O NVO LINK
+	let Url = window.location.href;
+	let regex = /[a-z]{1,}\b\/\w*|\.\D\w*/gm;
+	let pegaExtensao = [... Url.matchAll(regex)];
+	/*let juntaArr = pegaExtensao[1].concat(pegaExtensao[0]);
+	let r = {
+		dir:juntaArr[0],
+		ext:juntaArr[1]
+	};
+	console.log(r)*/
+	
+	//let regexExtesao = /(?:.html|.php|.htm)/gm;
+	
+	//PROCURANDO DIRETORIO E REDIRECIONANDO PAGINA
 	var newURL = window.location.search; //?url=nav/
 	resultado = newURL.substring(newURL.indexOf("/") + 1);
-/*		if(newURL.indexOf("url=nav/" + resultado)==-1) {
-		alert("não existe esse caminho na url");
-		} else {
-		alert("sim o caminho " + newURL + " existe na url");
-	};
-*/
-//	var url = new URL(baseUrl);
-//	url.searchParams.set('url', 'nav'); // added parameter with a space and !
-//	var res = decodeURIComponent(url); //decodifica URL*/
-//	history.pushState('null','null', res); return false;
-
-	//PROCURANDO DIRETORIO E REDIRECIONANDO PAGINA
+	
 	var ext = ".html";
-	var home = "../nav/home" + ext;
+	var home = `../nav/home${ext}`;
 	var dir = "../nav/";
 	var nav = resultado; //home
-	var caminho = (dir + nav + ext);
+	var caminho = `${dir}${nav}${ext}`; //../nav/home.html - CAMINHO MOTADO MANUAL
 
-	//Endereço da Barra de endereço.
-	//var linkURL = window.location.origin; //10.10.65.33/index.html?url=nav/home
-	//var siteURL = window.location.pathname; //index.html
+	window.location.search === '' ? fetchURL(home) : fetchURL(caminho)	;
+				//? http://127.0.0.1:5500/ 	 //: http://127.0.0.1:5500/index.html?url=nav/home	}; 
 
-	if(newURL.indexOf("url=nav/" + resultado)==-1) {
-				const URL_TO_FETCH = home; fetch(URL_TO_FETCH, {
-				method: 'GET' // opcional
-			})
-				.then(function(response) {
-				response.text()
-				.then(function(result){
-				document.getElementById("conteudo").innerHTML = result;
-				/*console.log(result);*/
-		  })
-		})
-			.catch(function(err) { console.error(err); });
-	} else {
-			const URL_TO_FETCH = caminho; fetch(URL_TO_FETCH, {
-			method: 'GET' // opcional
-		})
-			.then(function(response) {
-			response.text()
-			.then(function(result){
-			document.getElementById("conteudo").innerHTML = result;
-			/*console.log(result);*/
-	  })
-	})
-			.catch(function(err) {
+async function fetchURL(url){
+	try{
+		const URL =  await fetch(url); 
+		const urlToFetch = await URL.text();
+		document.getElementById("conteudo").innerHTML = urlToFetch; 
+		return urlToFetch
+	}catch(err){
 			document.getElementById("conteudo").innerHTML = err;
-			console.error(err); });
-	};
-
+			console.error(err);
+	}
+}
+	
 //INCLUDE HTML
 };//FIM
-//LINK EXEMPLO PARA MENU
-//index.html?url=nav/home
-//INCLUDE HTML
+
+//INCLUDE HTML MONTA A PÁGINA
 function passagemURL() {
 	var lisrURL = document.querySelectorAll('include-html');
-	 lisrURL.forEach((lisrURL, i) => {	    	
-	   file = lisrURL.getAttribute('url'); //PARA COLCOR EM LOOP É SO COLOCA I NO COLCHETES
-	   return includeHTML(file, i);
+	lisrURL.forEach((lisrURL, i) => {	    	
+	   file = lisrURL.getAttribute('url'); //PARA COLCOR EM LOOP É SO COLOCA I NO COUCHETES
+	    includeHTML(file, i);
 	});
 }
-function includeHTML(file, index) {
-	   	const URL = file; fetch(URL, {
-			method: 'GET' // opcional
-			})
-			.then(function(response) {
-			response.text()
-			.then(function(result){
-			var log = document.querySelectorAll('include-html')[index].innerHTML += result;
-			})		
-		})
-		.catch(function(err) {
-			document.querySelector('include-html')[index].innerHTML = err;
-		console.error(err);});
-	 
-};
+async function includeHTML(file, index) {
+	try{
+		const URL =  await fetch(file); 
+		const result = await URL.text();
+		var log = document.querySelectorAll('include-html')[index].innerHTML += result;	
+		//console.log(result)
+		return result;
+	}catch(err){
+		document.querySelector('include-html').innerHTML = err;
+		console.error(err);
+	}
+}	

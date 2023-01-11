@@ -11,7 +11,6 @@ async function conectJson(){
 }
 
 const origemServer = window.location.origin;
-console.log(`${origemServer}/json/dados_tecnicos.json`)
 async function criaVideo(nome) {
     const conexao = await fetch(`../json/dados_tecnicos.json`, {
         method: "POST",
