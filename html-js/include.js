@@ -6,33 +6,19 @@
 
 //INCLUDE HTML MONTA A PÁGINA CARREGA CONTEUDO
 function carregaConteudo() {
-//NAVEGAÇÃO ENTRE LINKS
-	//PEGA O CAMINHO DA URL PARA O NVO LINK
-	let Url = window.location.href;
-	let regex = /[a-z]{1,}\b\/\w*|\.\D\w*/gm;
-	let pegaExtensao = [... Url.matchAll(regex)];
-	/*let juntaArr = pegaExtensao[1].concat(pegaExtensao[0]);
-	let r = {
-		dir:juntaArr[0],
-		ext:juntaArr[1]
-	};
-	console.log(r)*/
-	
-	//let regexExtesao = /(?:.html|.php|.htm)/gm;
-	
 	//PROCURANDO DIRETORIO E REDIRECIONANDO PAGINA
-	var newURL = window.location.search; //?url=nav/
-	resultado = newURL.substring(newURL.indexOf("/") + 1);
-	
-	var ext = ".html";
-	var home = `../nav/home${ext}`;
-	var dir = "../nav/";
-	var nav = resultado; //home
-	var caminho = `${dir}${nav}${ext}`; //../nav/home.html - CAMINHO MOTADO MANUAL
-
-	window.location.search === '' ? fetchURL(home) : fetchURL(caminho)	;
-				//? http://127.0.0.1:5500/ 	 //: http://127.0.0.1:5500/index.html?url=nav/home	}; 
-
+	if(window.location.search === ''){
+		fetchURL(`../nav/home.html`)
+	 }else{
+		let Url = window.location.href;
+		let regex = /[a-z]{1,}\b\/|\w+$|\.\D\w*/gm;
+		let pegaExtensao = [... Url.match(regex)];
+		let novaUrl = `../${pegaExtensao[1]}${pegaExtensao[2]}${pegaExtensao[0]}`;
+		fetchURL(novaUrl);
+				//? http://127.0.0.1:5500/ 	 //: http://127.0.0.1:5500/index.html?url=nav/home;
+	 } 
+};//FIM
+//INCLUDE PAGINAÇÃO
 async function fetchURL(url){
 	try{
 		const URL =  await fetch(url); 
@@ -45,9 +31,6 @@ async function fetchURL(url){
 	}
 }
 	
-//INCLUDE HTML
-};//FIM
-
 //INCLUDE HTML MONTA A PÁGINA
 function passagemURL() {
 	var lisrURL = document.querySelectorAll('include-html');

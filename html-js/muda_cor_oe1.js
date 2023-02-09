@@ -124,9 +124,9 @@ function isertTable(passDados){
 			});					
 };
 
-function onoffExec(){
+//function onoffExec(){
 //***EVENTO CLICK CHECK***//
-let displayAll = document.querySelector("#tabela");
+/*let displayAll = document.querySelector("#tabela");
 let input_alloff = document.querySelector("[data-alloff]");
 	displayAll.addEventListener("click", function(event){
 		let clickCheck = event.path;
@@ -143,10 +143,10 @@ let input_alloff = document.querySelector("[data-alloff]");
 			}
 	})	
 };
-window.addEventListener("load", onoffExec);
-function alloffExec(){
+window.addEventListener("load", onoffExec);*/
+//function alloffExec(){
 //***ALLOFF EVENTO***//
-let list_check = document.querySelectorAll("#td_check");
+/*let list_check = document.querySelectorAll("#td_check");
 let input_alloff = document.querySelector("[data-alloff]");
 	input_alloff.addEventListener("click", function(event){
 		list_check.forEach((list_check, i) => {
@@ -158,4 +158,4 @@ let input_alloff = document.querySelector("[data-alloff]");
 		})
 	})
 };
-window.addEventListener("load", alloffExec);
+window.addEventListener("load", alloffExec);*/

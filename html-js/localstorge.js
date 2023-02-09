@@ -1,65 +1,63 @@
-let bancoStorge = 'cadastraAtividades'; //COLUNA CHAVE LOCALSTORGE
-//BUSCA DADOS EM LOCALSTORGE
-const itensStorge = JSON.parse(localStorage.getItem(bancoStorge)) || [];
-//CLASS
-class CadastroDadosForms {
-	constructor (id, username, valor){
-		this.id = id;
-		this.username = username;
-		this.valor = valor;
-	}
-	cadastrarBD(dados, cadastrar){	
-		localStorage.setItem(dados, JSON.stringify(cadastrar));
-	}
-}
-function cadastraAtividades(id, username, texto){
-	//CRIA OBEJTO EM CLASS
-	const cadastrar = new CadastroDadosForms(id, username, texto.value)
-	//COLOCA MAIS UM INTEM NA LISTA DE ARRAY
-	itensStorge.push(cadastrar);			
-	//CADASTRA ITEM NO LOCALSTORGE
-	cadastrar.cadastrarBD(bancoStorge, itensStorge)
-}
-//Modo para cadastrar elemento em localstorge
-//NOVO LOCALSTORGE
-function cadatrarLocastorg(){
-let displayAll = document.querySelector("#tabela");
-	displayAll.addEventListener("click", function(event){
-		let acaoEvent = event.target.checked;
-		console.log(event)
-		console.log(acaoEvent)
-		let id = Math.max(...itensStorge.map(itens => itens.id)); //BUSCA O MAIOR NUMERO DE UM ARRAY DE NUMEROS
-		let username = event.path[2].childNodes[16].innerText;
-		let texto = event.path[2].lastElementChild.firstElementChild;
-			id = itensStorge.length === 0 ? id =1 : id +1; //CONDIÇÃO QUE NALISA SE EXITE CASTRO / E SE HOVER SOMA UM AO JÁ CADASTRADO
-		console.log(`${id} ${username} ${texto}`);
-		if(acaoEvent === true){
-			if(itensStorge.map(itens => itens.username).toString() !== username){ //NÃO PERMITE CADASTRAR REPETIDOS
-				cadastraAtividades(id, username, texto);
-			}
-			texto.disabled = true;
-		}else{
-			itensStorge.splice(itensStorge.indexOf(itensStorge.find(itens => itens.username === username)),1)
-			localStorage.setItem(bancoStorge, JSON.stringify(itensStorge));
-			texto.value = '';
-			texto.disabled = false;
-		}
-	})
-}
-window.addEventListener("load", cadatrarLocastorg);
+import {CadastroDadosForms} from '../ControllerClass/ControllerClass.js';
 
-let recuperarTxt = itensStorge.map(itens => itens.valor).toString()
-function recuperaDados(){	
-	let texto = document.querySelector('[data-local] input');
-		texto.value = recuperarTxt;
-		texto.disabled = true;
+//BUSCA DADOS EM LOCALSTORGE
+const listaStorage = JSON.parse(localStorage.getItem('cadastraAtividades')) || [];
+
+function tabelaStorage(){
+let table = document.querySelector('[data-tabela]')
+	table.addEventListener("change", (event) => {
+	let username = event.target.offsetParent.parentElement.querySelector('[data-username]').innerText; //SELECIONA USERNAME
+	let localText = event.target.offsetParent.nextElementSibling.querySelector('[data-local] input'); // TEXTO DO IMPUT LOCAL
+		//CRIA OBEJTO EM CLASS
+		const dadosList = new CadastroDadosForms(id, username, localText.value);
+		let tdColor = event.target.offsetParent;
+		let tdText = event.target.offsetParent.children.OnOff;
+		if(event.target.checked === true){
+			//COLOCA MAIS UM INTEM NA LISTA DE ARRAY
+			listaStorage.push(dadosList);
+			//CADASTRA ITEM NO LOCALSTORGE
+			dadosList.cadastrarLocalSorage('cadastraAtividades', listaStorage)
+			console.log(`Cadastrado com sucesso!`);
+			//MUDA COR TEXTO CSS
+			tdColor.style.backgroundColor = "#00FF00"; //MUDA COR DO TD
+			tdText.innerText = 'ON: '; //MUDA TEXTO
+			localText.disabled = true;
+		}else{
+			//MUDA COR TEXTO CSS
+			tdColor.style.backgroundColor = "#FF0000"; //MUDA COR
+			tdText.innerText = 'OFF: '; //MUDA TEXTO
+			localText.disabled = false;
+			localText.value = '';
+			deletaDadosLista(username)
+		}	
+	})
+	
+}
+window.addEventListener("load", tabelaStorage);
+
+//DELETA NOME NA LISTA
+function deletaDadosLista(username){
+	listaStorage.splice(listaStorage.findIndex(itens => itens.username === username),1);
+	localStorage.setItem('cadastraAtividades', JSON.stringify(listaStorage));
+}
+
+//RECUPERA DADOS
+async function recuperaDados(){
+	listaStorage.forEach(itens => {
+		listaNomes(itens.username, itens.valor)  
+	  })
 }
 window.addEventListener("load", recuperaDados);
 
-
- let colorCheck = document.querySelectorAll("#td_check");
-	// colorCheck.style.backgroundColor = '#00FF00';	
-	// colorCheck.style.color = '#FFF';	
-	// colorCheck.style.fontWeight = "bold"
-	// colorCheck.style.innerText = "OFF: ";
+function listaNomes(users, valor){
+	let username = [...document.querySelectorAll('[data-username]')];
+	let userValor = username.find(itens => itens.innerText === users)	
+	let pegaValue = userValor.parentNode.querySelector('[data-local]');
+		pegaValue.lastElementChild.value = valor;
+		pegaValue.firstElementChild.disabled = true;
+		//MUDA COR TEXTO CSS
+		userValor.parentNode.querySelector('#OnOff').innerText = 'ON: '; //MUDA TEXTO;
+		userValor.parentNode.querySelector('#td_check').style.backgroundColor = "#00FF00"; //MUDA COR DO TD
+		userValor.parentNode.querySelector('#td_check').lastElementChild.checked = true;	
+}
 
