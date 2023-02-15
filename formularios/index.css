@@ -5,16 +5,14 @@ body {background-color:#8a2be2; overflow-x:hidden; margin:10px; /*padding:0px;*/
     /*overflow-x: scroll; /*barra de rolagem horizontal*/
     /*overflow-y: hidden; /*barra de rolagem horizontal*/
     /*white-space: nowrap; /*barra de rolagem horizontal*/
-    display: flex;
-    justify-content: center;
-    flex-direction: row;
+
 }
 
 box {width:1024px;}
 /*CONTEUDO*/
-#conteudo {
+article {
   font:14px "Arial", Helvetica, sans-serif; 
-  margin:0; 
+  margin: 10%; 
   padding:14px; 
   color:#0086e4;
   background-color: #fff;
@@ -25,16 +23,19 @@ box {width:1024px;}
   justify-content: center;
   flex-direction: row;
 }
-#conteudo h1 {text-align: center;}
-form{
-  width: 100%;
-  padding:0 10px 0;
+form {
+  margin-top: 100px;
 }
-
-.nome{
-  width: 60%;
+label{
+  margin-top: 50px;
+  display: flex;
 }
-
+input {
+   padding: 3px;
+}
+.login, .senha {
+  width: 200px;
+}
 
 .enviar{
   cursor: pointer;

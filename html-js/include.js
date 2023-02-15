@@ -11,9 +11,9 @@ function carregaConteudo() {
 		fetchURL(`../nav/home.html`)
 	 }else{
 		let Url = window.location.href;
-		let regex = /[a-z]{1,}\b\/|\w+$|\.\D\w*/gm;
-		let pegaExtensao = [... Url.match(regex)];
-		let novaUrl = `../${pegaExtensao[1]}${pegaExtensao[2]}${pegaExtensao[0]}`;
+		let regex = /nav\/\w+|\.\D\w*/gm;
+		let pegaExtensao = [... Url.match(regex)];	
+		let novaUrl = `../${pegaExtensao[1]}${pegaExtensao[0]}`;
 		fetchURL(novaUrl);
 				//? http://127.0.0.1:5500/ 	 //: http://127.0.0.1:5500/index.html?url=nav/home;
 	 } 
@@ -34,7 +34,7 @@ async function fetchURL(url){
 //INCLUDE HTML MONTA A PÁGINA
 function passagemURL() {
 	var lisrURL = document.querySelectorAll('include-html');
-	lisrURL.forEach((lisrURL, i) => {	    	
+	lisrURL.forEach((lisrURL, i) => {	  
 	   file = lisrURL.getAttribute('url'); //PARA COLCOR EM LOOP É SO COLOCA I NO COUCHETES
 	    includeHTML(file, i);
 	});
@@ -43,7 +43,7 @@ async function includeHTML(file, index) {
 	try{
 		const URL =  await fetch(file); 
 		const result = await URL.text();
-		var log = document.querySelectorAll('include-html')[index].innerHTML += result;	
+		document.querySelectorAll('include-html')[index].innerHTML += result;	
 		//console.log(result)
 		return result;
 	}catch(err){

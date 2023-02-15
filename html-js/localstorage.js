@@ -1,4 +1,4 @@
-import {CadastroDadosForms} from '../ControllerClass/ControllerClass.js';
+import { CadastroDadosForms } from '../ControllerClass/ControllerClass.js';
 
 //BUSCA DADOS EM LOCALSTORGE
 const listaStorage = JSON.parse(localStorage.getItem('cadastraAtividades')) || [];
@@ -42,22 +42,22 @@ function deletaDadosLista(username){
 }
 
 //RECUPERA DADOS
-async function recuperaDados(){
+export async function recuperaDados(){
 	listaStorage.forEach(itens => {
 		listaNomes(itens.username, itens.valor)  
 	  })
 }
 window.addEventListener("load", recuperaDados);
-
 function listaNomes(users, valor){
 	let username = [...document.querySelectorAll('[data-username]')];
-	let userValor = username.find(itens => itens.innerText === users)	
-	let pegaValue = userValor.parentNode.querySelector('[data-local]');
+	let userValor = username.find(itens => itens.innerText === users);
+	console.log(userValor.innerText)
+/*	let pegaValue = userValor.parentNode.querySelector('[data-local]');
 		pegaValue.lastElementChild.value = valor;
 		pegaValue.firstElementChild.disabled = true;
 		//MUDA COR TEXTO CSS
 		userValor.parentNode.querySelector('#OnOff').innerText = 'ON: '; //MUDA TEXTO;
 		userValor.parentNode.querySelector('#td_check').style.backgroundColor = "#00FF00"; //MUDA COR DO TD
-		userValor.parentNode.querySelector('#td_check').lastElementChild.checked = true;	
+		userValor.parentNode.querySelector('#td_check').lastElementChild.checked = true;	*/
 }
 

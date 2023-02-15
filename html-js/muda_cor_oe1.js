@@ -1,27 +1,22 @@
+import { recuperaDados } from "./localstorage.js";
 //CONEXÃO COM O ARQUIVO JSON
-function conectJson(){
-  //CRIAMDO TABELA
-fetch('../json/dados_tecnicos.json')
-  .then(function(response){ response.json()
-    .then(function(data){;
-      //PASSAGEM POR PARAMENTROS DA BUSCA NO ARQUIVO JSON
-		myArea(data);
-		btn(data);
-      //PASSAGEM POR PARAMENTROS DA BUSCA NO ARQUIVO JSON  	  
-    });
-})
-  .catch(function(err){
-    console.error('Failed retrieving information', err);
-  });
+async function conectJson(){
+	try {
+		const conexao = await fetch('../json/dados_tecnicos.json')
+		const openConexao = await conexao.json();
+		btn(openConexao);
+		myArea(openConexao);		
+		//return openConexao;
+	}catch (error){
+		console.log('Falha no link!')
+	}
 };
 window.addEventListener("DOMContentLoaded", conectJson);
-
 //ACÃO DE LISTA AS ÁREAS PRÉ-DEFINIDAS
 function myArea(data){
-	let novaLista = data[0].dados_tecnicos;
+	let novaLista = data.find(data => data).dados_tecnicos;
 	let areaAt = novaLista.map(p => p.area);
 	let novoArr = [... new Set(areaAt)];
-
 	//BOTÕES DAS AREAS NO INICIO DA PÁGINA
 	let btn = document.getElementById("btn");
 	novoArr.forEach((arrarea, i) => {
@@ -35,17 +30,14 @@ function myArea(data){
 		return e.area == predefineArea;			
 	});
 	isertTable(listaAreas);
-};
+}
 //ACÃO DO BOTÕES DE ÁREAS NO TOPO DA PAGINA
 function btn(data){
 	//LISTA APENAS AS AREAS EXISTENTES
-	var novaLista = data[0].dados_tecnicos
-	var areaAt = novaLista.map(p => p.area);
-	var novoArr = [... new Set(areaAt)];	
-	
+	let novaLista = data.find(data => data).dados_tecnicos;
 	//EVENTO CLICK BTN
 	var btn = document.getElementById("btn"); //BUSCA OS BOTÕES
-		btn.addEventListener("click", function(event){
+		btn.addEventListener("click", (event) => {
 			let dataCfs = event.target.dataset.cfs;
 			//ALTERAÇÃO NO H1 DE CADA CFs
 			let h1 = document.getElementById("h1").innerHTML = `Lista de Técnicos ${dataCfs}`;
@@ -58,6 +50,8 @@ function btn(data){
 				cfsList.forEach(cfsList => {
 					if(cfsList.id.indexOf(dataCfs) === -1){
 						isertTable(filtro);
+						console.log(filtro)
+						//recuperaDados();
 					}
                 })			
 		})
@@ -111,14 +105,14 @@ function isertTable(passDados){
 				colorCheck.children[1].checked = false
 			})
 		//************************************//CSS COLOR//************************************
-		var cssColor = document.querySelectorAll("#tabela tr");
-			for (var i = 1; i < cssColor.length; i++){
-				if((cssColor[i] = i) %2){
+	 	let cssColor = document.querySelectorAll("#tabela tr");
+			for (let i = 1; i < cssColor.length; i++){
+				if((i = i) %2){
 					cssColor[i].setAttribute("class", "cor");
 				}	
-			};
+			}
 		//*******************************************ESTILO E COR CINZA*******************************************
-		var td_input = document.querySelectorAll("[data-local]");			
+		let td_input = document.querySelectorAll("[data-local]");			
 			td_input.forEach(td_input => {
 				td_input.setAttribute("class", "cor");
 			});					
