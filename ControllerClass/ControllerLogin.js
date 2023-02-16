@@ -8,4 +8,8 @@ export class CadastroDadosForms {
 	cadastrarLocalSorage(dados, cadastrar){	
 		localStorage.setItem(dados, JSON.stringify(cadastrar));
 	}
+	direcionandoLogin(){
+		console.log('Acesso Bloqueado!')
+		return window.location.href = '../formularios/cadastrardados.html';
+	}
 }

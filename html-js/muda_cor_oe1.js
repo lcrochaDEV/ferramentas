@@ -1,6 +1,5 @@
-import { recuperaDados } from "./localstorage.js";
 //CONEXÃO COM O ARQUIVO JSON
-async function conectJson(){
+export async function conectJson(){
 	try {
 		const conexao = await fetch('../json/dados_tecnicos.json')
 		const openConexao = await conexao.json();
@@ -11,7 +10,6 @@ async function conectJson(){
 		console.log('Falha no link!')
 	}
 };
-window.addEventListener("DOMContentLoaded", conectJson);
 //ACÃO DE LISTA AS ÁREAS PRÉ-DEFINIDAS
 function myArea(data){
 	let novaLista = data.find(data => data).dados_tecnicos;
