@@ -3,7 +3,7 @@ import { CadastroDadosForms } from '../ControllerClass/ControllerClass.js';
 //BUSCA DADOS EM LOCALSTORGE
 const listaStorage = JSON.parse(localStorage.getItem('cadastraAtividades')) || [];
 
-function tabelaStorage(){
+export function tabelaStorage(){
 let table = document.querySelector('[data-tabela]')
 	table.addEventListener("change", (event) => {
 	let username = event.target.offsetParent.parentElement.querySelector('[data-username]').innerText; //SELECIONA USERNAME
@@ -33,7 +33,7 @@ let table = document.querySelector('[data-tabela]')
 	})
 	
 }
-window.addEventListener("load", tabelaStorage);
+//window.addEventListener('load', tabelaStorage);
 
 //DELETA NOME NA LISTA
 function deletaDadosLista(username){
@@ -50,8 +50,9 @@ export async function recuperaDados(){
 window.addEventListener("load", recuperaDados);
 function listaNomes(users, valor){
 	let username = [...document.querySelectorAll('[data-username]')];
-	let userValor = username.find(itens => itens.innerText === users);
-	console.log(userValor.innerText)
+	//let userValor = username.find(itens => itens.innerText === users);
+
+	console.log(username)
 /*	let pegaValue = userValor.parentNode.querySelector('[data-local]');
 		pegaValue.lastElementChild.value = valor;
 		pegaValue.firstElementChild.disabled = true;

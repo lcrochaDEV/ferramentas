@@ -10,6 +10,7 @@ export async function conectJson(){
 		console.log('Falha no link!')
 	}
 };
+//window.addEventListener("load", conectJson);
 //ACÃO DE LISTA AS ÁREAS PRÉ-DEFINIDAS
 function myArea(data){
 	let novaLista = data.find(data => data).dados_tecnicos;

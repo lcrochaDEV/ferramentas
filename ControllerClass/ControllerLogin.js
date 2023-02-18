@@ -8,8 +8,12 @@ export class CadastroDadosForms {
 	cadastrarLocalSorage(dados, cadastrar){	
 		localStorage.setItem(dados, JSON.stringify(cadastrar));
 	}
+
+	tratamentoDeErros(){
+		document.querySelector('[data-retorno]').innerHTML = `<img src="https://cdn.cdnlogo.com/logos/c/51/claro.svg"><p>Username ou Senha Incorretos!<p>`;
+	}
+
 	direcionandoLogin(){
-		console.log('Acesso Bloqueado!')
 		return window.location.href = '../formularios/cadastrardados.html';
 	}
 }
