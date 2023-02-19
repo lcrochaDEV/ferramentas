@@ -39,7 +39,7 @@ let formulario = document.querySelector('[data-formulario]');
 
 export async function verificarUsers(nomeVerificado){
     formulario.addEventListener("submit", async (event) => {
-        //event.preventDefault()
+        event.preventDefault();
         //console.log(event)
         let login = event.target.elements['login'];
         let senha = event.target.elements['senha'];
@@ -67,16 +67,14 @@ export async function verificarUsers(nomeVerificado){
                         //CADASTRA ITEM NO LOCALSTORGE
                         loginSys.cadastrarLocalSorage("cadastraLogin", loginStorage)
                         console.log(`Cadastrado com sucesso!`);
+                        redirecioanarPag();
                     }                       
                     if(nomeStorage.username === login.value && nomeStorage.indnumb === senha.value){ //IDENTIFICA USUARIO E SENHA EXISTE EM LOCALSTORAGE
-                        console.log('Acesso Liberado!');
-                        await conectJson();
-                        tabelaStorage();
-                        //REDIRECIONA PÁGINA
-                        return window.location.href = `${origem}/index.html?url=nav/contatos`;
+                        console.log('Acesso Liberado!');                   
+                        redirecioanarPag();
                     }else{
-                        console.log('Username ou Senha Incorretos!')
-                        
+                        const redirecionamento = new CadastroDadosForms();
+					    redirecionamento.tratamentoDeErros();  
                     }
                 }
             }else{
@@ -84,8 +82,13 @@ export async function verificarUsers(nomeVerificado){
 					    redirecionamento.tratamentoDeErros();
             }
             login.value = "";
-            senha.value = "";
-            
+            senha.value = ""; 
         }
     })
+}
+let redirecioanarPag = async () => {
+    //REDIRECIONA PÁGINA
+    window.location.href = `${origem}/index.html?url=nav/contatos`;
+    await conectJson();
+    tabelaStorage();
 }

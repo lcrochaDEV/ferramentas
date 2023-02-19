@@ -18,6 +18,10 @@ if(!nomeStorage){
         }
     })
 }else{
+    redirecioanarPag();
+}
+let redirecioanarPag = async () => {
+    //REDIRECIONA PÁGINA
     await conectJson();
     tabelaStorage();
 }
