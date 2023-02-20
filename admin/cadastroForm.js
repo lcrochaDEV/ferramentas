@@ -86,9 +86,7 @@ export async function verificarUsers(nomeVerificado){
         }
     })
 }
-let redirecioanarPag = async () => {
-    //REDIRECIONA PÁGINA
+async function redirecioanarPag(){
+    //REDIRECIONA 
     window.location.href = `${origem}/index.html?url=nav/contatos`;
-    await conectJson();
-    tabelaStorage();
 }

@@ -1,7 +1,5 @@
 //BLOQUEIO DE PAGINAS
 import { CadastroDadosForms } from '../ControllerClass/ControllerLogin.js';
-import { conectJson } from '../html-js/muda_cor_oe1.js';
-import { tabelaStorage } from '../html-js/localstorage.js';
 
 //NOVO LOCALSTORGE
 const loginStorage = JSON.parse(localStorage.getItem("cadastraLogin")) || [];
@@ -17,11 +15,4 @@ if(!nomeStorage){
             redirecionamento.direcionandoLogin();
         }
     })
-}else{
-    redirecioanarPag();
-}
-let redirecioanarPag = async () => {
-    //REDIRECIONA PÁGINA
-    await conectJson();
-    tabelaStorage();
 }

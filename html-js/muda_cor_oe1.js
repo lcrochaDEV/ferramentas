@@ -5,12 +5,11 @@ export async function conectJson(){
 		const openConexao = await conexao.json();
 		btn(openConexao);
 		myArea(openConexao);		
-		//return openConexao;
 	}catch (error){
 		console.log('Falha no link!')
 	}
 };
-//window.addEventListener("load", conectJson);
+window.addEventListener("load", conectJson);
 //ACÃO DE LISTA AS ÁREAS PRÉ-DEFINIDAS
 function myArea(data){
 	let novaLista = data.find(data => data).dados_tecnicos;

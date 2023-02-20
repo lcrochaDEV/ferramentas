@@ -31,7 +31,6 @@ let table = document.querySelector('[data-tabela]')
 			deletaDadosLista(username)
 		}	
 	})
-	
 }
 //window.addEventListener('load', tabelaStorage);
 
