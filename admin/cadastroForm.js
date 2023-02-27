@@ -1,6 +1,5 @@
 import { CadastroDadosForms } from '../ControllerClass/ControllerLogin.js';
-import { conectJson } from '../html-js/muda_cor_oe1.js';
-import { tabelaStorage } from '../html-js/localstorage.js';
+
 const origem = window.location.origin;
 
 let objLinkNomeRede = [
@@ -33,7 +32,7 @@ window.addEventListener ('load', async function(){
 });
 
 //NOVO LOCALSTORGE
-const loginStorage = JSON.parse(localStorage.getItem("cadastraLogin")) || [];
+const loginMaiusculoStorage = JSON.parse(localStorage.getItem("cadastraLogin")) || [];
 //CADASTRO CF EM BANCO DE DADOS
 let formulario = document.querySelector('[data-formulario]');
 
@@ -43,33 +42,35 @@ export async function verificarUsers(nomeVerificado){
         //console.log(event)
         let login = event.target.elements['login'];
         let senha = event.target.elements['senha'];
+        let loginMaiusculo = login.value.toUpperCase();
+
         //TRANSFORMANDO EM OBJETOS
-			if(login.value === "" && senha.value === ""){
+			if(loginMaiusculo === "" && senha.value === ""){
 				console.log(`Cadastre um item!`);
-			}else if(login.value != "" && senha.value != ""){
+			}else if(loginMaiusculo != "" && senha.value != ""){
             //CADASTRO DE ID
-			let id = loginStorage.findIndex(id => {
-				if(id.id === loginStorage.length -1)
-					return loginStorage.length;
+			let id = loginMaiusculoStorage.findIndex(id => {
+				if(id.id === loginMaiusculoStorage.length -1)
+					return loginMaiusculoStorage.length;
 			}) +1;			
             //CRIA OBEJTO EM CLASS
-			const loginSys = new CadastroDadosForms(id, login.value, senha.value)
+			const loginMaiusculoSys = new CadastroDadosForms(id, loginMaiusculo, senha.value)
         
-            let nomeStorage = loginStorage.find(itens => itens.username === login.value); //LOCALSTORAGE
-            let nomeUser = nomeVerificado.find(itens => itens.nome === login.value); //JSON
+            let nomeStorage = loginMaiusculoStorage.find(itens => itens.username === loginMaiusculo); //LOCALSTORAGE
+            let nomeUser = nomeVerificado.find(itens => itens.nome === loginMaiusculo); //JSON
 
             //CAMPARA SE EXITE O NOME NO ARQUIVO JSON
             if(nomeUser){
-                if(nomeUser.nome === login.value){
-                    if(nomeStorage === undefined || nomeStorage.username !== login.value){
-                        //COLOCA MAIS UM INTEM NA LISTA DE ARRAY
-                        loginStorage.push(loginSys);
+                if(nomeUser.nome === loginMaiusculo){
+                    if(nomeStorage === undefined || nomeStorage.username !== loginMaiusculo){
+                        //COLOCA MAIS UM INTEM NA LISTA DE ARRAY            
+                        loginMaiusculoStorage.push(loginMaiusculoSys);
                         //CADASTRA ITEM NO LOCALSTORGE
-                        loginSys.cadastrarLocalSorage("cadastraLogin", loginStorage)
+                        loginMaiusculoSys.cadastrarLocalSorage("cadastraLogin", loginMaiusculoStorage)
                         console.log(`Cadastrado com sucesso!`);
                         redirecioanarPag();
                     }                       
-                    if(nomeStorage.username === login.value && nomeStorage.indnumb === senha.value){ //IDENTIFICA USUARIO E SENHA EXISTE EM LOCALSTORAGE
+                    if(nomeStorage.username === loginMaiusculo && nomeStorage.indnumb === senha.value){ //IDENTIFICA USUARIO E SENHA EXISTE EM LOCALSTORAGE
                         console.log('Acesso Liberado!');                   
                         redirecioanarPag();
                     }else{

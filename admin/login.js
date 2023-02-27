@@ -1,7 +1,7 @@
 //BLOQUEIO DE PAGINAS
 import { CadastroDadosForms } from '../ControllerClass/ControllerLogin.js';
 
-//NOVO LOCALSTORGE
+//NOVO LOCALSTORAGE
 const loginStorage = JSON.parse(localStorage.getItem("cadastraLogin")) || [];
 let nomeStorage = loginStorage.find(itens => itens.username); //LOCALSTORAGE
 if(!nomeStorage){

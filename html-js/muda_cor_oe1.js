@@ -1,57 +1,59 @@
-//CONEXÃO COM O ARQUIVO JSON
-export async function conectJson(){
-	try {
-		const conexao = await fetch('../json/dados_tecnicos.json')
-		const openConexao = await conexao.json();
-		btn(openConexao);
-		myArea(openConexao);		
-	}catch (error){
-		console.log('Falha no link!')
-	}
-};
-window.addEventListener("load", conectJson);
+import { ConectJson } from '../ControllerClass/ConectaJson.js'
+import { recuperaDados } from "./localstorage.js";
+
+export async function conectaApi(){
+	let conectJsonResult = new ConectJson('../json/dados_tecnicos.json')
+	let data = await conectJsonResult.conectJsonUrlJson();
+		myArea(data);
+		btn(data);
+}
+window.addEventListener("load", conectaApi);
+
 //ACÃO DE LISTA AS ÁREAS PRÉ-DEFINIDAS
 function myArea(data){
 	let novaLista = data.find(data => data).dados_tecnicos;
 	let areaAt = novaLista.map(p => p.area);
 	let novoArr = [... new Set(areaAt)];
 	//BOTÕES DAS AREAS NO INICIO DA PÁGINA
-	let btn = document.getElementById("btn");
-	novoArr.forEach((arrarea, i) => {
-		btn.innerHTML += `<a href="#" class="btn${arrarea}" data-cfs="${arrarea}">Lista de Técnicos ${arrarea}</a>`;
-	});
+	let btn = document.querySelector("#btn");
+		novoArr.forEach( (arrarea, i) => {
+			btn.innerHTML += `<a href="#" class="btn${arrarea}" data-cfs="${arrarea}">Lista de Técnicos ${arrarea}</a>`;
+		});
 	//DEFINI O CF QUE VAI SER DESTAQUE NA INICIALIZAÇÃO DA PÁGINA
 	let predefineArea = novoArr.find(itens => itens === 'GR');
 	let h1 = document.getElementById("h1").innerHTML = `Lista de Técnicos ${predefineArea}`;
 	//FILTRA TODO O CF QUE JÁ ESTÁ DEFINIDO EM PREDEFINEAREA
 	let listaAreas =  novaLista.filter(function(e) {		
-		return e.area == predefineArea;			
+		return e.area == predefineArea;
 	});
-	isertTable(listaAreas);
+	isertTable(listaAreas)
+	recuperaDados();
 }
 //ACÃO DO BOTÕES DE ÁREAS NO TOPO DA PAGINA
 function btn(data){
 	//LISTA APENAS AS AREAS EXISTENTES
 	let novaLista = data.find(data => data).dados_tecnicos;
 	//EVENTO CLICK BTN
-	var btn = document.getElementById("btn"); //BUSCA OS BOTÕES
-		btn.addEventListener("click", (event) => {
-			let dataCfs = event.target.dataset.cfs;
-			//ALTERAÇÃO NO H1 DE CADA CFs
-			let h1 = document.getElementById("h1").innerHTML = `Lista de Técnicos ${dataCfs}`;
-			//CRIA NOVA TABELA COM TODOS OS RESPECTIVOS MENBROS DE CADA AREA
-			let filtro = novaLista.filter((e) => {
-				return e.area === dataCfs;
-			})			
-			
-			let cfsList = document.querySelectorAll('#tabela table');
-				cfsList.forEach(cfsList => {
-					if(cfsList.id.indexOf(dataCfs) === -1){
-						isertTable(filtro);
-						console.log(filtro)
-						//recuperaDados();
-					}
-                })			
+	let btn = document.getElementById("btn"); //BUSCA OS BOTÕES
+	let btnList = [...btn.children]
+	btn.addEventListener("click", (event) => {
+		let dataCfs = event.target.dataset.cfs;
+			if(dataCfs !== undefined){
+				//ALTERAÇÃO NO H1 DE CADA CFs
+				let h1 = document.getElementById("h1").innerHTML = `Lista de Técnicos ${dataCfs}`;
+				//CRIA NOVA TABELA COM TODOS OS RESPECTIVOS MENBROS DE CADA AREA
+				let filtro = novaLista.filter((e) => {
+					return e.area === dataCfs;
+				})			
+				
+				let cfsList = document.querySelectorAll('#tabela table');
+					cfsList.forEach(cfsList => {
+						if(cfsList.id.indexOf(dataCfs) === -1){
+							isertTable(filtro);
+						}
+					})
+				recuperaDados();
+			}
 		})
 };
 
@@ -91,8 +93,8 @@ function isertTable(passDados){
 					</td>
 					`;
 				})
-			let dataAllOff = document.querySelector('[data-alloff]');	
-				dataAllOff.innerHTML = `ALL OFF <input type="checkbox" id="${passDados[0].area}" >`;				
+			let dataAllOff = document.querySelector('#alloff');	
+				dataAllOff.innerHTML = `ALL OFF <input type="checkbox" id="${passDados[0].area}" data-alloff>`;				
 		//********************************ESTILO E COR CINZA***********************************
 		let colorCheck = document.querySelectorAll("#td_check");
 			colorCheck.forEach(colorCheck => {
@@ -116,38 +118,3 @@ function isertTable(passDados){
 			});					
 };
 
-//function onoffExec(){
-//***EVENTO CLICK CHECK***//
-/*let displayAll = document.querySelector("#tabela");
-let input_alloff = document.querySelector("[data-alloff]");
-	displayAll.addEventListener("click", function(event){
-		let clickCheck = event.path;
-			if(clickCheck[0].checked === false && clickCheck[1].id !== ''){
-				clickCheck[1].style.backgroundColor = "#FF0000";
-				clickCheck[1].childNodes[1].style.color = "#FFFFFF";
-				clickCheck[1].childNodes[1].innerText = "OFF: ";
-				clickCheck[1].childNodes[1].style.fontWeight = "bold";					
-			}else if(clickCheck[0].checked === true){
-				clickCheck[1].childNodes[1].innerText = "ON: ";
-				clickCheck[1].style.backgroundColor = "#00FF00";
-				clickCheck[1].childNodes[1].style.color = "#FFFFFF";
-				clickCheck[1].childNodes[1].style.fontWeight = "bold";
-			}
-	})	
-};
-window.addEventListener("load", onoffExec);*/
-//function alloffExec(){
-//***ALLOFF EVENTO***//
-/*let list_check = document.querySelectorAll("#td_check");
-let input_alloff = document.querySelector("[data-alloff]");
-	input_alloff.addEventListener("click", function(event){
-		list_check.forEach((list_check, i) => {
-			list_check.firstElementChild.innerText = "OFF: ";
-			list_check.style.backgroundColor = "#FF0000";
-			list_check.style.color = "#FFFFFF";
-			list_check.children[1].checked = false;
-			list_check.style.fontWeight = "bold";
-		})
-	})
-};
-window.addEventListener("load", alloffExec);*/
