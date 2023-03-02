@@ -12,6 +12,7 @@ section {
   display: flex;
   flex-direction: row;
   justify-content:center;
+  position: fixed;
 }
 /*CONTEUDO*/
 article {
@@ -26,7 +27,7 @@ article {
 article h1 {
   font-family:Arial, Helvetica, sans-serif;
   font-size: 34px;
-  margin:40px 10px 0 30%;
+  margin:40px 0px 0 80px;
   font-weight: bold;
   opacity: 0.9;
 }
@@ -44,28 +45,45 @@ article h1 {
   position: absolute;
 }
 form {
-  margin:20px 10px 3% 22%;
+  margin:20px 10px 3px 65px;
 }
-label{
-  margin:30px 0 5px 0;
+label {
+  margin-left: 4px;
   display: flex;
+  margin:0;
+  padding: 3px;
+  width: 0;
+  position:relative;
+  top: 23px;
+  z-index: 1;
 }
 input {
   height: 25px;
-  border: 1px solid #EEE;
-  border-radius: 3px;
-  padding: 0 10px;
+  border: 0;
+  border-bottom: 1px solid #EEE;
+  padding: 4px;
   transition-duration: 0.5s;
   color: #333333;
-  margin-top: 10px;
+  margin-bottom: 30px;
 }
-input:focus{outline: none; border: 1px solid #0086e4;}
+input:focus {
+  outline: none; 
+  border: 0;
+  border-bottom: 1px solid #0086e4;
+  position:relative;
+  margin-top: 25;
+}
+input:valid {
+  position:relative;
+  margin-top: 25px;
+}
 .login, .senha {
   width: 200px;
+  color: #333333;
 }
 .links {
-  margin:10px 40px;
-  padding: 10px 110px;
+  margin:10px 50px;
+  padding: 10px 60px;
 }
 .enviar {
   cursor: pointer;
@@ -79,6 +97,7 @@ input:focus{outline: none; border: 1px solid #0086e4;}
   letter-spacing: 1px;
   transition-duration: 1s;
   padding: 0 5px;
+  margin:0 20px;
 }
 
 .enviar:hover {background-color: #18a0ff;}
@@ -99,9 +118,7 @@ input:focus{outline: none; border: 1px solid #0086e4;}
   padding: 0;
 }
 .erro img {
-
   width: 40;
-
 }
 nav {
   width: 1000px;
@@ -126,6 +143,5 @@ nav p {
   margin-top: 90px;
   letter-spacing: 1px;
   filter: blur(3px);
-
 }
 /***************************************************************/
